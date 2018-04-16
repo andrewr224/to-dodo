@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+header{
+    text-align: center;
+}
+
+section{
+    display: flex;
+    align-content: stretch;
+    width: 100%;
+    height: 100vh;
+}
+
+.lists{
+    display: flex;
+    flex-direction: column;
+    background: coral;
+    width: 25%;
+}
+
+.lists header{
+    padding: 1rem;
+}
+
+.list{
+    background: white;
+    margin: .3rem;
+    margin-bottom: 0;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.todos{
+    display: flex;
+    flex-direction: column;
+    background: teal;
+    width: 75%;
+}
+
+.todos header{
+    background: sienna;
+    padding: .4rem;
+    font-size: 1rem;
+}
+
+.todo{
+    display: flex;
+    background: cyan;
+    margin: .3rem;
+    margin-bottom: 0;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.todo input{
+    margin-right: .3rem;
+}
+
+.todo span{
+    margin-left: auto;
+    color: gray;
+}
