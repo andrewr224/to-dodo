@@ -43,6 +43,10 @@ section{
     font-size: 1rem;
 }
 
+.list.active{
+    background: gainsboro;
+}
+
 .todos{
     display: flex;
     flex-direction: column;
