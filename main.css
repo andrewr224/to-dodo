@@ -41,10 +41,47 @@ section{
     margin-bottom: 0;
     padding: .5rem;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .list.active{
     background: gainsboro;
+}
+
+.input-group{
+    background: salmon;
+    display: flex;
+    margin: .3rem;
+    font-size: 1rem;
+}
+
+.input-group input{
+    padding: .5rem;
+}
+
+.input-group input:first-child{
+    flex: 1;
+    font-size: 1rem;
+}
+
+.star{
+    visibility: hidden;
+    font-size: 1.8rem;
+    width: 2rem;
+    height: 2rem;
+    margin-left: .3rem;
+    cursor: pointer;
+}
+
+.star:before{
+    content: "\2606";
+    position: absolute;
+    visibility: visible;
+}
+
+.star:checked:before{
+    content: "\2605";
+    position: absolute;
 }
 
 .todos{
@@ -60,6 +97,16 @@ section{
     font-size: 1rem;
 }
 
+.completed{
+    font-size: .9rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(255, 140, 0, .3);
+    padding: .5rem;
+    margin: .3rem;
+}
+
 .todo{
     display: flex;
     background: cyan;
@@ -70,10 +117,35 @@ section{
 }
 
 .todo input{
+    cursor: pointer;
     margin-right: .3rem;
 }
 
 .todo span{
+    margin-left: .3rem;
+    color: gray;
+    cursor: pointer;
+}
+
+.todo span:nth-child(3){
+    margin-left: auto;
+    color: red;
+}
+
+.done{
+    display: flex;
+    background: cadetBlue;
+    margin: .3rem;
+    margin-bottom: 0;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.done input{
+    margin-right: .3rem;
+}
+
+.done span{
     margin-left: auto;
     color: gray;
 }
