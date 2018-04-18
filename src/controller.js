@@ -1,15 +1,30 @@
+import List       from './list';
+
 const controller = (() => {
   const container = document.querySelector('section');
   const listsBox  = document.querySelector('.lists');
   const toDoBox   = document.querySelector('.todos');
-  const lists     = [];
+  const inbox     = List.new({ 'title': 'Inbox', 'protected': true });
+  const lists     = [inbox];
 
   let buildList = (list) => {
     let box = document.createElement('div');
     box.classList.add('list');
-    box.textContent = list.title;
     box.dataset.value = lists.indexOf(list);
-    box.addEventListener('click', select);
+
+    let title = document.createElement('p');
+    title.textContent = list.title;
+    title.addEventListener('click', select);
+
+    box.appendChild(title);
+
+    if(!list.protected) {
+      let trash = document.createElement('span');
+      trash.addEventListener('click', destroyList);
+      trash.innerHTML = '&#128465;';
+      box.appendChild(trash);
+    }
+
     return box;
   };
 
@@ -21,7 +36,7 @@ const controller = (() => {
   function select() {
     deselectOld();
 
-    let listNum = this.getAttribute('data-value');
+    let listNum = this.parentNode.getAttribute('data-value');
 
     showList(lists[listNum]);
   };
@@ -54,6 +69,15 @@ const controller = (() => {
 
     list.destroy(index);
     showList(list);
+  }
+
+  function destroyList() {
+    if(!confirm('Delete List? This will delete all todos in this list.')) { return; }
+
+    let listNum = this.parentNode.getAttribute('data-value');
+    lists.splice(listNum, 1);
+
+    renderLists();
   }
 
   let buildToDo = (todo) => {
@@ -112,10 +136,62 @@ const controller = (() => {
     return box;
   };
 
-  let addList = (list) => {
+  let addList1 = (list) => {
     lists.push(list);
 
-    listsBox.appendChild(buildList(list));
+    renderLists();
+  };
+
+  function addList() {
+    if (event.keyCode == 13) {
+      let title   = this.value;
+
+      if(!title) { return; }
+      let list = List.new({'title': title});
+      lists.push(list);
+
+      renderLists({ 'list': list });
+    }
+  };
+
+  let clearLists = () => {
+    listsBox.textContent = '';
+  };
+
+  let addListHeader = () => {
+    let header = document.createElement('header');
+    let h1     = document.createElement('h1');
+    h1.textContent = 'To DoDo';
+    header.appendChild(h1);
+    listsBox.appendChild(header);
+  };
+
+  let addListForm = () => {
+    let input = document.createElement('input');
+    let msg   = 'Add new list';
+
+    input.addEventListener('keydown', addList);
+    input.value = msg;
+    input.addEventListener('focus', () => { if(input.value == msg) { input.value=''; } });
+    input.addEventListener('focusout', () => { if(!input.value) { input.value = msg; } });
+
+    listsBox.appendChild(input);
+  };
+
+  let renderLists = (params = {}) => {
+    clearLists();
+    addListHeader();
+
+    lists.forEach(list => {
+      listsBox.appendChild(buildList(list));
+    });
+
+    addListForm();
+
+    if(lists.lenght == 0) { return; }
+
+    let list = params['list'] ? params['list'] : inbox;
+    showList(list);
   };
 
   let renderToDo = (todo) => {
@@ -190,9 +266,11 @@ const controller = (() => {
     addInput();
     highlight(lists.indexOf(list));
 
-    list.todos.forEach(todo => {
-      renderToDo(todo);
-    });
+    if(list.todos.length > 0) {
+      list.todos.forEach(todo => {
+        renderToDo(todo);
+      });
+    }
 
     if(list.dones.length == 0) { return; }
 
@@ -207,7 +285,7 @@ const controller = (() => {
     });
   };
 
-  return { addList, showList };
+  return { addList1, renderLists };
 })();
 
 export default controller;

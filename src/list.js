@@ -2,9 +2,10 @@ import ToDo from './todo';
 
 class List {
   constructor(params) {
-    this.title = params['title'];
-    this.todos = [];
-    this.dones = [];
+    this.title     = params['title'];
+    this.todos     = [];
+    this.dones     = [];
+    this.protected = params['protected'];
   }
 
   static new(params) {

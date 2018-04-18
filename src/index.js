@@ -1,10 +1,7 @@
 import controller from './controller';
 import List       from './list';
 
-let lists = document.querySelectorAll('.list');
-let todoField = document.querySelector('.todo-field');
-
-let inbox = List.new({'title': 'Inbox'});
+let inbox = List.new({'title': 'To DoDo'});
 inbox.addToDo({'title': 'Type your task in the field above to add it', 'star': false});
 inbox.addToDo({'title': "Click on a list to see it's tasks", 'star': true});
 inbox.addToDo({'title': "Click on a task to see it's description", 'star': true});
@@ -20,7 +17,8 @@ todo.addToDo({'title': 'Create some dummy markup', 'star': true});
 todo.addToDo({'title': 'Add basic styles', 'star': true});
 todo.addToDo({'title': 'Add js to rule them all', 'star': true});
 
-controller.addList(inbox);
-controller.addList(flash);
-controller.addList(todo);
-controller.showList(inbox);
+controller.addList1(inbox);
+controller.addList1(flash);
+controller.addList1(todo);
+
+controller.renderLists();
