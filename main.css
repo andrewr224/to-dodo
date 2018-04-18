@@ -27,25 +27,28 @@ section{
 .lists{
     display: flex;
     flex-direction: column;
-    background: coral;
+    background: rgb(220, 220, 220);
+    color: rgb(38, 38, 38);
     width: 25%;
 }
 
 .lists header{
     padding: 1rem;
+    background: rgb(220, 20, 60);
+    color: white;
+    box-shadow: 0 5px 10px black;
+    margin-bottom: 10px;
 }
 
 .list{
     display: flex;
-    background: white;
-    margin: .3rem;
-    margin-bottom: 0;
+    padding: .3rem;
     font-size: 1rem;
     cursor: pointer;
 }
 
 .list.active{
-    background: gainsboro;
+    background: rgba(101, 230, 217, .3);
 }
 
 .list p{
@@ -55,7 +58,6 @@ section{
 
 .list span{
     padding: .5rem;
-    color: gray;
     cursor: pointer;
 }
 
@@ -63,22 +65,24 @@ section{
     margin: .3rem;
     padding: .4rem;
     font-size: 1rem;
+    border: node;
 }
 
 .input-group{
-    background: salmon;
+    background: white;
     display: flex;
     margin: .3rem;
-    font-size: 1rem;
 }
 
 .input-group input{
     padding: .5rem;
+    border: node;
+    border-color: transparent;
+    font-size: 1rem;
 }
 
 .input-group input:first-child{
     flex: 1;
-    font-size: 1rem;
 }
 
 .star{
@@ -105,13 +109,14 @@ section{
 .todos{
     display: flex;
     flex-direction: column;
-    background: teal;
+    background: rgb(93, 9, 26);
+    color: rgb(38, 38, 38);
     width: 75%;
 }
 
 .todos header{
-    background: sienna;
-    padding: .4rem;
+    color: white;
+    padding: .8rem;
     font-size: 1rem;
 }
 
@@ -119,15 +124,16 @@ section{
     font-size: .9rem;
     text-align: center;
     text-transform: uppercase;
-    color: white;
-    background-color: rgba(255, 140, 0, .3);
+    color: rgb(64, 64, 64);
+    background-color: rgb(204, 204, 204);
     padding: .5rem;
     margin: .3rem;
+    margin-top: .6rem;
 }
 
 .todo{
     display: flex;
-    background: cyan;
+    background: white;
     margin: .3rem;
     margin-bottom: 0;
     padding: .5rem;
@@ -141,18 +147,17 @@ section{
 
 .todo span{
     margin-left: .3rem;
-    color: gray;
     cursor: pointer;
 }
 
 .todo span:nth-child(3){
     margin-left: auto;
-    color: red;
 }
 
 .done{
     display: flex;
-    background: cadetBlue;
+    background: rgb(204, 204, 204);
+    color: rgb(64, 64, 64);
     margin: .3rem;
     margin-bottom: 0;
     padding: .5rem;
