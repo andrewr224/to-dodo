@@ -8,18 +8,6 @@ class ToDo {
   static new(params) {
     return new this(params);
   }
-
-  toggleStar() {
-    this.star = !this.star;
-  }
-
-  markDone() {
-    this.done = true;
-  }
-
-  removeDueDate() {
-    this.dueDate = '';
-  }
 }
 
 export default ToDo;
