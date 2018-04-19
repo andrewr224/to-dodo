@@ -9,12 +9,18 @@ body{
     font-family: Arial, sans-serif;
 }
 
+header{
+    text-align: center;
+}
+
 h1{
+    display: inline-block;
     font-size: 2rem;
 }
 
-header{
-    text-align: center;
+header img{
+    width: 3rem;
+    margin-right: 2rem;
 }
 
 section{
